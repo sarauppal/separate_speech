@@ -32,11 +32,15 @@ def download(loc,name,link,sr=16000,type='audio'):
 
     if type == 'audio':
         # download wav file from the youtube link
-        command = 'cd %s;' % loc
-        command += 'youtube-dl -x --audio-format wav -o o' + name + '.wav ' + link + ';'
-        command += 'ffmpeg -i o%s.wav -ar %d -ac 1 %s.wav;' % (name,sr,name)
-        command += 'rm o%s.wav' % name
+        command = 'cd %s' % loc
         os.system(command)
+        command = 'youtube-dl -x --audio-format wav -o o' + name + '.wav ' + link 
+        os.system(command)
+        command = 'ffmpeg -i o%s.wav -ar 48000 -ac 1 %s.wav' % (name, name)
+        os.system(command)
+        command = 'del o%s.wav' % name
+        os.system(command)
+
 
 
 

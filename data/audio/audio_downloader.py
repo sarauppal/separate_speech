@@ -24,13 +24,13 @@ def m_audio(loc,name,cat,start_idx,end_idx):
         link = m_link(cat.loc[i,'link'])
         start_time = cat.loc[i,'start_time']
         end_time = start_time + 3.0
-        avh.download(loc,f_name,link)
-        avh.cut(loc,f_name,start_time,end_time)
+        download(loc,f_name,link)
+        cut(loc,f_name,start_time,end_time)
 
-cat_train = pd.read_csv('catalog/avspeech_train.csv')
+cat_train = pd.read_csv('C:/JNB/532s/bill9800/speech_separation/data/audio/catalog/avspeech_train.csv')
 #cat_test = pd.read_csv('catalog/avspeech_test.csv')
 
 # create 80000-90000 audios data from 290K
 avh.mkdir('audio_train')
-m_audio('audio_train','audio_train',cat_train,80000,80500)
+m_audio('audio_train','audio_train',cat_train,0,20)
 
